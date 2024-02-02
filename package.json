@@ -1,0 +1,35 @@
+{
+  "name": "food-ordering-app",
+  "version": "1.0.0",
+  "description": "Food ordering app using React",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lihereshma/React-Food-Ordering-App.git"
+  },
+  "keywords": [
+    "react",
+    "food",
+    "order"
+  ],
+  "author": "Reshma Lihe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lihereshma/React-Food-Ordering-App/issues"
+  },
+  "homepage": "https://github.com/lihereshma/React-Food-Ordering-App#readme",
+  "devDependencies": {
+    "parcel": "^2.11.0"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browesrslist": [
+    "last 2 versions"
+  ]
+}
