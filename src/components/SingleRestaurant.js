@@ -16,18 +16,14 @@ const SingleRestaurant = () => {
     const json = await data.json();
 
     setResInfo(json?.data);
-    console.log(json?.data);
+    console.log(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card);
   }
 
   if(resInfo === null) return <h1>Loading...</h1>;
 
   const { name, cloudinaryImageId, cuisines, avgRating } = resInfo?.cards[0]?.card?.card?.info;
 
-  // const { itemCards } = resInfo?json?.data?.cards.find(x=> x.groupedCard)?.
-  // groupedCard?.cardGroupMap?.REGULAR?.
-  // cards?.map(x => x.card?.card)?.
-  // filter(x=> x['@type'] == MENU_ITEM_TYPE_KEY)?.
-  // map(x=> x.itemCards).flat().map(x=> x.card?.info) || [];
+  const { itemCards } = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
 
   return (
@@ -38,7 +34,11 @@ const SingleRestaurant = () => {
       <h4>{ avgRating } stars</h4>
       <p>Menu: </p>
       <ul>
-        {/* { itemCards.map(item => <li key={ item.card.info.id }>{ item.card.info.name }</li>) }         */}
+        { itemCards.map(item => 
+          <li key={ item.card.info.id }>
+            { item.card.info.name } - {"Rs. "}{ item.card.info.price/100 || item.card.info.defaultPrice/100 }
+          </li>
+        )}        
       </ul>
     </div>
 
