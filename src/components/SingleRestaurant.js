@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
 import { swiggy_menu_api_URL, img_cdn_URL } from "../utils/constants";
 import { useParams } from 'react-router-dom';
+import useSingleRestaurant from "../utils/useSingleRestaurant";
 
 const SingleRestaurant = () => {
-  const [resInfo, setResInfo] = useState(null);
-
+  // const [resInfo, setResInfo] = useState(null);
   const { resId } = useParams();
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  const resInfo = useSingleRestaurant(resId);
 
-  const fetchMenu = async () => {
-    const data = await fetch(swiggy_menu_api_URL + resId);
-    const json = await data.json();
+  // useEffect(() => {
+  //   fetchMenu();
+  // }, []);
 
-    setResInfo(json?.data);
-    console.log(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card);
-  }
+  // const fetchMenu = async () => {
+  //   const data = await fetch(swiggy_menu_api_URL + resId);
+  //   const json = await data.json();
+
+  //   setResInfo(json?.data);
+  // }
 
   if(resInfo === null) return <h1>Loading...</h1>;
 
