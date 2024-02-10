@@ -37,7 +37,7 @@ export const img_cdn_URL =
 
 // Swiggy API to get Restaurant data with foodfire erver
 export const swiggy_api_URL =
-  "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING";
+  "https://foodfire.onrender.com/api/restaurants?lat=19.199560&lng=72.964256&page_type=DESKTOP_WEB_LISTING";
 
 export const swiggy_menu_api_URL =
-  "https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=21.1702401&lng=72.83106070000001&&submitAction=ENTER&restaurantId=";
+  "https://foodfire.onrender.com/api/menu?page-type=REGULAR_MENU&complete-menu=true&lat=19.199560&lng=72.964256&&submitAction=ENTER&restaurantId=";
