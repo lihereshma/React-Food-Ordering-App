@@ -9,13 +9,13 @@ const Header = () => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <div className="header">
+    <div className="header flex justify-between p-4 shadow mb-4">
       <div className="site-logo">
-        <img src={ FoodOrderLogo } alt="Logo" />
+        <img className="w-40" src={ FoodOrderLogo } alt="Logo" />
       </div>
 
       <div className="navbar">
-        <ul>
+        <ul className='flex'>
           <li>Online Status: { onlineStatus ? "green" : "red" }</li>
           <li><Link to='/'>Home</Link></li>
           <li><Link to='/about'>About Us</Link></li>
