@@ -1,15 +1,17 @@
-import { useEffect, useState } from 'react';
-import RestaurantCard from './RestaurantCard';
+import { useEffect, useState, useContext } from 'react';
+import RestaurantCard, { withPromotedLabel } from './RestaurantCard';
 import { resList, swiggy_api_URL } from '../utils/constants';
 import Shimmer from './Shimmer';
 import { Link } from "react-router-dom";
 import useOnlineStatus from '../utils/useOnlineStatus';
+import UserContext from '../utils/UserContext';
 
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
@@ -21,11 +23,13 @@ const Body = () => {
 
     setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-
+    console.log(json.data)
   }
 
   const onlineStatus = useOnlineStatus();
   if(onlineStatus === false) return <h1>Looks like you are offline... Please check your internet connection</h1>
+
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   return listOfRestaurants.length === 0 ? <Shimmer /> : (
     <div className="body">     
@@ -62,12 +66,30 @@ const Body = () => {
         >
           Top rated restaurants
         </button>
+        <div>
+          <label htmlFor="userName">User Name</label>
+          <input type="text" name="userName" id="userName"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+        </div>
       </div>
 
       <div className="res-container">
         {          
           filteredRestaurant.map((restaurant) => (
-            <Link key={ restaurant.info.id } to={'/restaurant/' + restaurant.info.id }><RestaurantCard resData={ restaurant } /></Link>
+            <Link 
+              key={ restaurant.info.id } 
+              to={'/restaurant/' + restaurant.info.id }>
+                {
+                  restaurant.info.isOpen ? (
+                  <RestaurantCardPromoted resData={ restaurant } />
+                  ) : (
+                  <RestaurantCard resData={ restaurant } />
+                  )
+                }
+                
+            </Link>
           ))
         }
       </div>

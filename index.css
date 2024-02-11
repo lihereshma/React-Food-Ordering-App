@@ -1,3 +1,141 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
+
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+.header {
+  padding: 1em;
+  border: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-logo img {
+  width: 150px;
+}
+
+.navbar ul {
+  display: flex;
+  align-items: center;
+}
+
+.navbar ul li {
+  margin-left: 2em;
+}
+
+.search {
+  padding: 1em;
+  border: 1px solid #ccc;
+  margin: 1em 0;
+}
+
+.res-container,
+.shimmer-container {
+  padding: 1em;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1%;
+}
+
+.res-card,
+.shimmer-card {
+  width: 30%;
+  padding: 1em;
+  border: 1px solid #ccc;
+  margin-bottom: 2em;
+}
+
+.res-card img {
+  width: 100%;
+}
+
+.filter-btn, .login-btn {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 1em 0;
+  border-radius: 0;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.footer {
+  padding: 1em;
+  border: 1px solid #ccc;
+  margin: 1em 0;
+  text-align: center;
+}
+
+.footer p {
+  margin: 0;
+}
+
+
+.shimmer-title {
+  width: 60%;
+  margin-top: 10px;
+}
+.shimmer-tags {
+  width: 80%;
+  margin-top: 4px;
+}
+.shimmer-details {
+  width: 100%;
+  margin-top: 18px;
+}
+.shimmer-container .shimmer-img {
+  height: 144px;
+  width: 100%;
+}
+
+/*Animation to Shimmer Component Cards */
+.stroke {
+  height: 15px;
+  background: #777;
+}
+.animate {
+  animation: shimmer 3s;
+  animation-iteration-count: infinite;
+  background: linear-gradient(to right, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+  background-size: 1000px 100%;
+}
+@keyframes shimmer {
+  from {
+    background-position: -1000px 0;
+  }
+  to {
+    background-position: 1000px 0;
+  }
+}
+
+
+
+
+.category-items li > div {
+  padding: 1em;
+  border: 1px solid #ccc;
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+}
+
+.accordion-head {
+  cursor: pointer;
+}
+
+.category-items li > div .item-img img {
+  width: 100px;
+}
