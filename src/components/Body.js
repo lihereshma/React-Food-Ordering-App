@@ -22,6 +22,7 @@ const Body = () => {
     const json = await data.json();
 
     setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     console.log(json.data)
   }
@@ -32,7 +33,7 @@ const Body = () => {
   const { loggedInUser, setUserName } = useContext(UserContext);
 
   return listOfRestaurants.length === 0 ? <Shimmer /> : (
-    <div className="body">     
+    <div className="body max-w-screen-lg mx-auto">     
       <div className="filter">
         <div className="search">
           <input 
@@ -59,7 +60,7 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {            
             const filteredListOfRestaurants = listOfRestaurants.filter(
-              (res) => res.info.avgRating > 4.5
+              (res) => res.info.avgRating > 4
             );
             setListOfRestaurants(filteredListOfRestaurants);
           }}
@@ -75,16 +76,19 @@ const Body = () => {
         </div>
       </div>
 
-      <div className="res-container">
+      <div className="res-container grid grid-cols-3 gap-8">
         {          
           filteredRestaurant.map((restaurant) => (
             <Link 
               key={ restaurant.info.id } 
-              to={'/restaurant/' + restaurant.info.id }>
+              to={'/restaurant/' + restaurant.info.id }
+              className='transition-transform hover:scale-95'
+              >
                 {
-                  restaurant.info.isOpen ? (
-                  <RestaurantCardPromoted resData={ restaurant } />
-                  ) : (
+                  // restaurant.info.isOpen ? (
+                  // <RestaurantCardPromoted resData={ restaurant } />
+                  // ) : 
+                  (
                   <RestaurantCard resData={ restaurant } />
                   )
                 }

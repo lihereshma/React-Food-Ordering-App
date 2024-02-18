@@ -5,8 +5,8 @@ const Error = () => {
   console.log(err);
 
   return (
-    <div>
-      <h1>{ err.status } { err.statusText }</h1>
+    <div className="max-w-screen-lg mx-auto">
+      <h1 className="text-4xl font-semibold">{ err.status } { err.statusText }</h1>
     </div>
   )
 }
